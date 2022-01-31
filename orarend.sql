@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Jan 20. 18:44
+-- Létrehozás ideje: 2022. Jan 31. 21:05
 -- Kiszolgáló verziója: 10.4.22-MariaDB
--- PHP verzió: 8.0.13
+-- PHP verzió: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,12 +64,12 @@ CREATE TABLE `orarend` (
 --
 
 INSERT INTO `orarend` (`ORAREND_ID`, `TANTARGY_ID`, `OSZTALY_ID`, `AJTOSZAM_ID`, `Nap`, `Hanyadikora`) VALUES
-(1, 2, 0, 102, 'Hétfő', 1),
-(2, 2, 0, 102, 'Hétfő', 2),
-(3, 1, 2, 3, 'Hétfő', 1),
-(4, 1, 2, 3, 'Hétfő', 2),
-(5, 3, 2, 202, 'Hétfő', 3),
-(6, 4, 0, 201, 'Hétfő', 3);
+(1, 2, 0, 1, 'Hétfő', 1),
+(2, 2, 0, 1, 'Hétfő', 2),
+(3, 1, 2, 0, 'Hétfő', 1),
+(4, 1, 2, 0, 'Hétfő', 2),
+(5, 3, 2, 3, 'Hétfő', 3),
+(6, 4, 0, 2, 'Hétfő', 3);
 
 -- --------------------------------------------------------
 
@@ -164,6 +164,7 @@ INSERT INTO `tantargy` (`TARGY_ID`, `tantargy_neve`) VALUES
 
 CREATE TABLE `tanterem` (
   `AJTOSZAM_ID` int(3) NOT NULL,
+  `Terem` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
   `Ferohely` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -171,11 +172,11 @@ CREATE TABLE `tanterem` (
 -- A tábla adatainak kiíratása `tanterem`
 --
 
-INSERT INTO `tanterem` (`AJTOSZAM_ID`, `Ferohely`) VALUES
-(3, 32),
-(102, 36),
-(201, 12),
-(202, 16);
+INSERT INTO `tanterem` (`AJTOSZAM_ID`, `Terem`, `Ferohely`) VALUES
+(0, '3', 32),
+(1, '102', 36),
+(2, '201', 12),
+(3, '202', 16);
 
 --
 -- Indexek a kiírt táblákhoz
